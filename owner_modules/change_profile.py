@@ -36,8 +36,12 @@ def format_commands(device_info):
         'quit',
         f'service-port vlan 319 gpon {pon} ont {id} gemport 3 multi-service user-vlan 103 tag-transform translate'
     ]
+    dev_commands = [
+        f'interface gpon 0/{slot}',
+        f'ont modify {port} {id} ont-lineprofile-id 10 ont-srvprofile-id 10'
+    ]
 
-    return commands
+    return dev_commands
 
 def connect_host(host, user, password):
     try:
@@ -67,7 +71,11 @@ def apply_commands(host, user, password, commands):
             telnet_con.write(b" " + b"\n\n")
             log = telnet_con.read_very_eager().decode('utf-8')
             time.sleep(2)
-
+            
+            print('-----------------------------------')
+            print(log)
+            print('-----------------------------------')
+            
             logs.append({
                 'command': command,
                 'log': log

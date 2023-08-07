@@ -14,8 +14,19 @@ def apply_commands():
         return verify_fields
     
     apply_reponse = change_profile.run(request_body)
-    
     return apply_reponse
-    
-# RUN: flask --app hello run --host=10.0.30.244 --port=8002    
 
+
+
+#RUN WITH PYTHON
+"""
+if __name__ == "__main__":
+    app.run(host='10.0.30.244', port=8002, debug=True) 
+"""
+
+
+# RUN CLI: 
+"""
+    flask --app router run --host=10.0.30.244 --port=8002 --debug
+    
+"""
