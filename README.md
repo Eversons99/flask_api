@@ -1,5 +1,5 @@
 # Resume
-  A small flask app with just a route that starts a function to apply some commands on Huawei OLT, i'm using telnet lib to connect OLT 
+  A small flask API with just a route that starts a function to apply some commands on Huawei OLT, i'm using telnet lib to connect OLT 
   
 ## Running server
 
