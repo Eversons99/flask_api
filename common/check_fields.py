@@ -1,5 +1,5 @@
 model = {
-   "alvocom" : ['host', 'serial-number', 'pon', 'id']
+   "alvocom" : ['host', 'serial-number', 'pon', 'id', 'vlan']
 }
 
 def check_fields(data_list, model_name):
@@ -15,8 +15,11 @@ def check_fields(data_list, model_name):
       if param not in body_params:
          missing_params.append(param)
       else:
-         if data_list[param].strip() == '':
-            missing_params.append(param)
+         if type(data_list[param]) != int:
+            if data_list[param].strip() == '':
+               missing_params.append(param)
+         elif data_list[param] == '':
+             missing_params.append(param)
 
    if len(missing_params) != 0:
       return {
